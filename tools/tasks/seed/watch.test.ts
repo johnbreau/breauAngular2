@@ -1,6 +1,3 @@
-import { watch } from '../../utils';
+import {watch} from '../../utils';
 
-/**
- * Executes the build process, watching for file changes and rebuilding the test environment.
- */
-export = watch('build.test');
+export = watch('build.test')

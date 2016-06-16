@@ -1,20 +1,16 @@
-import { VERSION_NODE, VERSION_NPM } from '../../config';
+import {VERSION_NPM, VERSION_NODE} from '../../config';
 
 function reportError(message: string) {
   console.error(require('chalk').white.bgRed.bold(message));
   process.exit(1);
 }
 
-/**
- * Executes the build process, verifying that the installed NodeJS and NPM version matches the required versions as
- * defined in the application configuration.
- */
 export = () => {
   let exec = require('child_process').exec;
   let semver = require('semver');
 
   exec('npm --version',
-    function(error: Error, stdout: NodeBuffer, stderr: NodeBuffer) {
+    function (error: Error, stdout: NodeBuffer, stderr: NodeBuffer) {
       if (error !== null) {
         reportError('npm preinstall error: ' + error + stderr);
       }
@@ -25,7 +21,7 @@ export = () => {
     });
 
   exec('node --version',
-    function(error: Error, stdout: NodeBuffer, stderr: NodeBuffer) {
+    function (error: Error, stdout: NodeBuffer, stderr: NodeBuffer) {
       if (error !== null) {
         reportError('npm preinstall error: ' + error + stderr);
       }
@@ -34,4 +30,4 @@ export = () => {
         reportError('NODE is not in required version! Required is ' + VERSION_NODE + ' and you\'re using ' + stdout);
       }
     });
-};
+}

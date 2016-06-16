@@ -1,12 +1,9 @@
 declare module 'cssnano' {
 
   interface IOptions {
-    discardComments?: {
+    discardComments: {
       removeAll: boolean;
     };
-    discardUnused?: boolean;
-    zindex?: boolean;
-    reduceIdents?: boolean;
   }
 
   interface ICssnano {

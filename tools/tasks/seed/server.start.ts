@@ -1,6 +1,3 @@
-import { serveSPA } from '../../utils';
+import {serveSPA} from '../../utils';
 
-/**
- * Executes the build process, serving the files of the development environment using an `express` server.
- */
-export = serveSPA;
+export = serveSPA

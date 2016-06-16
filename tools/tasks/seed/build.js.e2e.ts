@@ -1,20 +1,15 @@
 import * as gulp from 'gulp';
 import * as gulpLoadPlugins from 'gulp-load-plugins';
-import { join } from 'path';
-
-import { APP_DEST, APP_SRC, TOOLS_DIR } from '../../config';
-import { makeTsProject, templateLocals } from '../../utils';
-
+import {join} from 'path';
+import {APP_SRC, APP_DEST, TOOLS_DIR} from '../../config';
+import {templateLocals, makeTsProject} from '../../utils';
 const plugins = <any>gulpLoadPlugins();
 
-/**
- * Executes the build process, transpiling the TypeScript files (including the e2e-spec files, excluding the spec files)
- * for the e2e environment.
- */
+
 export = () => {
   let tsProject = makeTsProject();
   let src = [
-    'typings/index.d.ts',
+    'typings/browser.d.ts',
     TOOLS_DIR + '/manual_typings/**/*.d.ts',
     join(APP_SRC, '**/*.ts'),
     '!' + join(APP_SRC, '**/*.spec.ts')
@@ -28,4 +23,4 @@ export = () => {
     .pipe(plugins.sourcemaps.write())
     .pipe(plugins.template(templateLocals()))
     .pipe(gulp.dest(APP_DEST));
-};
+}
